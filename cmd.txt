@@ -1,0 +1,26 @@
+terraform command to migrate the tstate file to s3 :
+
+$ terraform init -migrate-state         
+$ aws s3 ls s3://gaon-ka-terraform-state/infra/dev/
+
+Seprate commands to apply one file at a time using target :
+
+$ terraform apply -target=aws_vpc.project_vpc
+
+$ terraform apply -target=aws_internet_gateway.publicgateway
+
+$ terraform apply -target=aws_route_table.public_route
+
+$ terraform apply -target=aws_route_table_association.public_assoc
+
+$ terraform apply -target=aws_security_group.project_sg
+
+$ terraform apply -target=aws_db_subnet_group.project_db_private_subnet
+
+$ terraform apply -target=aws_instance.terraform_infra
+
+$ terraform apply -target=aws_db_instance.project_rds
+
+Optional 
+
+$ terraform apply
